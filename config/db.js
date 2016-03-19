@@ -1,7 +1,7 @@
 'use strict';
 
 var mysql = require('mysql');
-var connection = mysql.createConnection("mysql://rh3i1d4i5vj3pxik:dc3nzhxjaliw4vdf@izm96dhhnwr2ieg0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/trygkfqphk92wr3o");
+var connection = mysql.createConnection("mysql://qyxtzm4spakqp7zz:nyemz604yz132yro@izm96dhhnwr2ieg0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/mcc5v3u1snbf799o");
 var connection = mysql.createConnection(process.env.JAWSDB_URL || {
   host: 'localhost',
   user: 'root',
