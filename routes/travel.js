@@ -40,12 +40,8 @@ router.post('/destinations/notes', function(req, res) {
   });
 });
 
-
-// FIX DELETE BELOW THIS COMMENT! ATTEMPTING TO DELETE A DESTINATION AND ALL NOTES WITH THAT LOCATION
-
-
 router.delete('/destinations/:location', function(req, res) {
-  db.query(`DELETE destinations, notes FROM destinations INNER JOIN notes WHERE destinations.location = '${req.params.location}'`, function(err, destinations) {
+  db.query(`DELETE destinations, notes FROM destinations INNER JOIN notes WHERE notes.location = '${req.params.location}' AND destinations.location = '${req.params.location}'`, function(err, destinations) {
     if(err) return res.status(400).send(err);
     res.send(destinations);
   });

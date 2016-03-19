@@ -1,8 +1,62 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html, body {
+	padding: 0; 
+	margin: 0; 
+	background-image: url(http://cdn.allwallpaper.in/wallpapers/3395x2057/16838/outer-space-stars-3395x2057-wallpaper.jpg);
+	background-size: 100%;
+}
+  
+#earth_div {
+	top: 0; 
+	right: 0; 
+	bottom: 0; 
+	left: 0; 
+	position: absolute !important;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
 }
 
-a {
-  color: #00B7FF;
+#earth_div:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.we-pm-icon {
+	cursor: pointer;
+}
+
+#input {
+	color: #FFF;
+	position: absolute !important;
+}
+
+.we-pp-wrapper {
+	cursor: pointer;
+	text-align: -webkit-center;
+	text-align: center;
+}
+
+div#input {
+  padding-right: 35%;
+  padding-left: 26%;
+}
+
+.we-pp-content {
+	width: 83%;
+}
+
+.btn-danger {
+	float: right;
+}
+
+input[type="text"] {
+	color: black;
+  height: 34px;
+  width: 252px;
+}
+
+b {
+	font-size: 16px;
 }
