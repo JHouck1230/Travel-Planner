@@ -12,7 +12,6 @@ app.factory('TravelFactory', function($http, $state, $localStorage) {
 	  $http.get('/travel/')
 		.then(function(res) {
 			destinations = res.data;
-			console.log('res.data: ', res.data);
 			destinations.forEach(function(dest) {
 				getCoords(dest.location, dest.name, res.data);
 			});
@@ -35,7 +34,6 @@ app.factory('TravelFactory', function($http, $state, $localStorage) {
       		lng: results[0].geometry.location.lng()
       	};
       	coords.push(mark);
-      	console.log('mark: ', mark);
       	if(coords.length === data.length) placePins();
       });
     }
@@ -55,7 +53,6 @@ app.factory('TravelFactory', function($http, $state, $localStorage) {
     grandcanyon.addTo(earth);
     var numCoords = coords.length
 		for (var i = 0; i < numCoords; i++) {
-			console.log('coords[i].location: ', coords[i].location, ' coords[i].lat: ', coords[i].lat, ' coords[i].lng: ', coords[i].lng);
 			pins[i] = WE.marker([coords[i].lat, coords[i].lng]).addTo(earth);
 			pins[i].bindPopup(`<b>${coords[i].name}</b><button class='btn btn-xs btn-danger'><span class='glyphicon glyphicon-remove'></span></button><br>
 												<span>${coords[i].location}</span><br>
@@ -64,7 +61,6 @@ app.factory('TravelFactory', function($http, $state, $localStorage) {
 			document.getElementsByClassName('btn-danger')[i].addEventListener("click", deleteLocation);
 			document.getElementsByClassName('we-pp-wrapper')[i].addEventListener("click", goToNotes);
 		}
-		console.log('pins: ', pins);
 		earth.setView([coords[numCoords - 1].lat, coords[numCoords - 1].lng], 6);
 	}
 
@@ -104,7 +100,7 @@ app.factory('TravelFactory', function($http, $state, $localStorage) {
 		event.stopPropagation();
 		var pin = this.parentNode.parentNode.parentNode.parentNode;
 		var location = this.parentElement.querySelectorAll('span')[1].innerHTML;
-		$http.delete(`/travel/destinations/${location}`, location)
+		$http.delete(`/travel/destinations/${location}`)
 		.then(function(res) {
 			pin.remove()
 		});
@@ -112,7 +108,6 @@ app.factory('TravelFactory', function($http, $state, $localStorage) {
 
 	function goToNotes() {
 		var location = this.querySelectorAll('span')[1].innerHTML;
-		console.log('goToNotes: ', location);
 		$state.go('notes', {
 			location: location
 		});
@@ -142,7 +137,6 @@ app.factory('TravelFactory', function($http, $state, $localStorage) {
 		$http.get(`/travel/destinations/notes/${location}`)
 		.then(function(res) {
 			$localStorage.notes = res.data;
-			console.log('get notes: ', res.data);
 		}, function(err) {
 			console.error(err);
 		})

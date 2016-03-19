@@ -5,11 +5,9 @@ var app = angular.module('travelApp');
 app.controller('notesCtrl', function($state, $scope, $localStorage, TravelFactory) {
 
 	$scope.saveNote = function() {
-		console.log($scope);
 		var location = $localStorage.location;
 		TravelFactory.saveNote($scope.newNote, location);
 		$scope.notes = $localStorage.notes;
-		console.log($scope.notes);
 		$scope.newNote = '';
 	}
 
@@ -32,4 +30,6 @@ app.controller('notesCtrl', function($state, $scope, $localStorage, TravelFactor
 	$scope.goToDest = function() {
 		$state.go('destinations');
 	}
+
+	$scope.notes = $localStorage.notes;
 })
