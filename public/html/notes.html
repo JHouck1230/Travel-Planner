@@ -1,23 +1,32 @@
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Activities/Notes</th>
-    </tr>
-    <tbody>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <textarea class="form-control" rows="2" maxlength='100' id="newNotes" ng-model='newNote' placeholder="Enter a new activity!"></textarea>
+    </div>
+    <button ng-click='saveNote()' type="submit" class="btn btn-primary">Submit</button>
+    <button ng-click='goToDest()' class="btn btn-primary"><span class="glyphicon glyphicon-globe"></span></button>
+  </form>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td></td>
+        <th colspan='4'>Activities/Notes</th>
       </tr>
-    </tbody>
-  </thead>
-</table>
+      <tbody>
+        <tr ng-repeat='note in notes track by $index'>
+          <td>
+            <span ng-hide='note.editing'>{{note.activity}}</span>
+            <input ng-model='note.activity' ng-show='note.editing' type="text">
+          </td>
+          <td>
+            <span>{{note.location}}</span>
+          </td>
+          <td>
+            <button ng-hide='note.editing' ng-click='editNote()' class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button ng-show='note.editing' ng-click='saveEdit()' class="btn btn-success btn-sm"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+          </td>
+          <td><button ng-click='deleteNote()' class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></button></td>
+        </tr>
+      </tbody>
+    </thead>
+  </table>
+</div>

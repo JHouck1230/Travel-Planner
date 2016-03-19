@@ -4,7 +4,16 @@ html, body {
 	background-image: url(http://cdn.allwallpaper.in/wallpapers/3395x2057/16838/outer-space-stars-3395x2057-wallpaper.jpg);
 	background-size: 100%;
 }
+
+.container {
+	width: 50%;
+	padding-top: 3%;
+}
   
+td {
+	width: 60%;
+}
+
 #earth_div {
 	top: 0; 
 	right: 0; 
@@ -59,4 +68,24 @@ input[type="text"] {
 
 b {
 	font-size: 16px;
+}
+
+thead {
+  align-items: inherit;
+}
+
+tr {
+  text-align: initial;
+}
+
+table {
+	border-radius: 3px;
+	margin-top: 3%;
+	background-color: #fff;
+}
+
+th {
+  color: black;
+  text-align: center;
+  font-size: xx-large;
 }

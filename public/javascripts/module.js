@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('travelApp', ['ui.router']);
+var app = angular.module('travelApp', ['ui.router', 'ngStorage']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
@@ -10,13 +10,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		controller: 'destCtrl'
 	})
 	.state('notes', {
-		url: '/destinations/notes',
+		url: '/destinations/notes/:location',
 		templateUrl: '/html/notes.html',
 		controller: 'notesCtrl'
 	});
 	$urlRouterProvider.otherwise('/destinations');
 });
-
-app.run(function(TravelFactory) {
-	TravelFactory.getDestinations();
-})

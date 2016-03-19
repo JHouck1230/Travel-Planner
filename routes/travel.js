@@ -20,7 +20,7 @@ router.get('/notes', function(req, res) {
 })
 
 router.get('/destinations/notes/:location', function(req, res){
-  db.query(`SELECT notes.*, destinations.location FROM notes LEFT JOIN destinations ON notes.location = destinations.location WHERE notes.location = '${req.params.location}';`, function(err, notes) {
+  db.query(`SELECT * FROM notes WHERE notes.location = '${req.params.location}'`, function(err, notes) {
     if(err) return res.status(400).send(err);
     res.send(notes);
   });
@@ -54,6 +54,13 @@ router.delete('/destinations/notes/:id', function(req, res) {
   });
 });
 
-router.put('/')
+router.put('/destinations/notes/:id', function(req, res) {
+  console.log('body: ', req.body.activity);
+  console.log('id: ', req.params.id);
+  db.query(`UPDATE notes SET activity = '${req.body.activity}' WHERE id = ${req.params.id}`, function(err, notes) {
+    if(err) return res.status(400).send(err);
+    res.send(notes);
+  });
+});
 
 module.exports = router;
