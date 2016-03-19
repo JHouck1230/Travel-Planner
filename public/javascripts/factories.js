@@ -42,10 +42,10 @@ app.factory('TravelFactory', function($http, $state, $localStorage) {
 	function placePins() {
 		var earth = WE.map('earth_div');
 		var bounds = [[35.98245136, -112.26379395], [36.13343831, -112.10998535]];
-		var osm = WE.tileLayer('https://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg', {
+		var osm = WE.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg', {
       attribution: 'Tiles Courtesy of MapQuest'
     }).addTo(earth);
-    var grandcanyon = WE.tileLayer('https://tileserver.maptiler.com/grandcanyon/{z}/{x}/{y}.png', {
+    var grandcanyon = WE.tileLayer('http://tileserver.maptiler.com/grandcanyon/{z}/{x}/{y}.png', {
       bounds: bounds,
       minZoom: 10,
       maxZoom: 16
