@@ -1,7 +1,9 @@
 'use strict';
 
 var mysql = require('mysql');
-var connection = mysql.createConnection("mysql://qyxtzm4spakqp7zz:nyemz604yz132yro@izm96dhhnwr2ieg0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/mcc5v3u1snbf799o");
+require('dotenv').config();
+console.log(process.env.DB);
+var connection = mysql.createConnection(process.env.DB);
 var connection = mysql.createConnection(process.env.JAWSDB_URL || {
   host: 'localhost',
   user: 'root',
